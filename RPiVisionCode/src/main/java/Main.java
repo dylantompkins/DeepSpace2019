@@ -89,6 +89,7 @@ public final class Main{
   public static int team;
   public static boolean server;
   public static List<CameraConfig> cameraConfigs = new ArrayList<>();
+  public static UsbCamera camera;
 
   // declare networktables objects
   public static NetworkTable table;
@@ -203,7 +204,7 @@ public final class Main{
   public static VideoSource startCamera(CameraConfig config) {
     System.out.println("Starting camera '" + config.name + "' on " + config.path);
     CameraServer inst = CameraServer.getInstance();
-    UsbCamera camera = new UsbCamera(config.name, config.path);
+    camera = new UsbCamera(config.name, config.path);
     MjpegServer server = inst.startAutomaticCapture(camera);
 
     Gson gson = new GsonBuilder().create();
@@ -505,5 +506,9 @@ public final class Main{
   public static void sendAreas(Rect rR, Rect rL) {
     rightAreaEntry.setDouble(rR.area());
     leftAreaEntry.setDouble(rL.area());
+  }
+
+  public static void sendCameraResolution() {
+    camera.get
   }
 }
