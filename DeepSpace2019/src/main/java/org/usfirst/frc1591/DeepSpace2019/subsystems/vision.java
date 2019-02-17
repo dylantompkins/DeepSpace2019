@@ -74,13 +74,13 @@ public class vision extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public boolean checkCentered() {
-        boolean centered = false;
+    // public boolean checkCentered() {
+    //     boolean centered = false;
 
-        if () { // if x values are equal distance from the midlle with offset of ?
-            centered = true;
-        }
-        return centered;
-    }
+    //     if () { // if x values are equal distance from the midlle with offset of ?
+    //         centered = true;
+    //     }
+    //     return centered;
+    // }
 }
 
