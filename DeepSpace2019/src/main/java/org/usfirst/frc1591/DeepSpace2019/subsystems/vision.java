@@ -32,7 +32,7 @@ public class vision extends Subsystem {
         public static double leftArea;
 
         // camera constants
-        public static final int cameraMiddleX = 640;
+        public static final double cameraMiddleX = 640; // PLACEHOLDER
 
     public vision() {
         // start NetworkTables
@@ -74,13 +74,44 @@ public class vision extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    // public boolean checkCentered() {
-    //     boolean centered = false;
+    public boolean checkCentered() {
+        boolean centered = false;
+        double leftDiff = 0;
+        double rightDiff = 0;
+        final double CENTER_OFFSET = 20; // amount of pixels off the center line can be in both directions combined
 
-    //     if () { // if x values are equal distance from the midlle with offset of ?
-    //         centered = true;
-    //     }
-    //     return centered;
-    // }
+        leftDiff = cameraMiddleX - leftX;
+        rightDiff = rightX - cameraMiddleX;
+
+        if (Math.abs(leftDiff - rightDiff) <= CENTER_OFFSET) { // if x values are equal distance from the middle with offset of ?
+            centered = true;
+        }
+        return centered;
+    }
+
+    public boolean checkProx() {
+        boolean inPosition = false;
+        final double targetProx = 200; // PLACEHOLDER
+
+        if (getAvgArea() <= targetProx) {
+            inPosition = true;
+        }
+
+        return inPosition;
+    }
+
+    public double getAvgArea() { // used for finding distnace from target
+        return (rightArea + leftArea) / 2;
+    }
+
+    public double getStrafeDiff() {
+        double diff;
+
+        if () {
+
+        }
+
+        return diff;
+    }
 }
 
